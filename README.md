@@ -122,4 +122,12 @@ powerbuilder8的知识库，记录一下学习的东西
         end if
 
     end if
-	
+#	复制数据窗口数据
+    wj_rcsc.reset()  情况
+    dwj_rcsc2.RowsCopy(1, dwj_rcsc2.RowCount(), Primary!, dwj_rcsc, 1, Primary!) 复制过去
+    long ll_row, ll_rows
+    ll_rows = dwj_rcsc.RowCount()
+
+    FOR ll_row = 1 to ll_rows
+        dwj_rcsc.SetItemStatus(ll_row, 0, Primary!,DataModified!)  复制的不要跟新
+    NEXT
