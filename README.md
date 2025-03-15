@@ -131,3 +131,27 @@ powerbuilder8的知识库，记录一下学习的东西
     FOR ll_row = 1 to ll_rows
         dwj_rcsc.SetItemStatus(ll_row, 0, Primary!,DataModified!)  复制的不要跟新
     NEXT
+#   datetime的东西
+## 获取当前的datetime
+    now_time = datetime(date(string(today(),"yyyy-mm-dd")), now())
+## string转换datetime
+    ld_time = datetime(date(left(ls_datetime,10)),time(right
+    (ls_datetime,len(ls_datetime) - 11)))
+    其中ls_datetime这个要满足yyyy-mm-dd hh:mm:ss
+## 获取今天的datetime
+    datetime(date(left(ls_datetime,10)),time("00:00:00"))
+
+## datetime下日期加1
+    其中ld_today为datetime格式
+    ld_today = dw_jxjjgl.object.qsj[ll_selectedRow]
+    // 分解日期和时间
+    date ld_date,ld_oldtime
+    time ld_time
+    datetime ld_new_date
+    ld_date = Date(ld_today)  // 提取日期部分
+    ld_time = Time(ld_today)  // 提取时间部分
+    // 日期加一天
+    ld_date = RelativeDate(ld_date, 1)  
+    // 或 ld_date = ld_date + 1
+    // 合并为新日期时间
+    ld_new_date = DateTime(ld_date, ld_time)
