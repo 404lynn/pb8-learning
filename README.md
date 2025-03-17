@@ -1,3 +1,15 @@
+- [pb8-learning](#pb8-learning)
+- [一些函数](#一些函数)
+- [数据窗口的sql如何比较日期](#数据窗口的sql如何比较日期)
+- [获取datetime在pb里面](#获取datetime在pb里面)
+- [使用结构体传参](#使用结构体传参)
+- [复制数据窗口数据](#复制数据窗口数据)
+- [datetime的东西](#datetime的东西)
+  - [获取当前的datetime](#获取当前的datetime)
+  - [string转换datetime](#string转换datetime)
+  - [获取今天的datetime](#获取今天的datetime)
+  - [datetime下日期加1](#datetime下日期加1)
+  - [数据窗口子窗口模糊搜索](#数据窗口子窗口模糊搜索)
 # pb8-learning
 powerbuilder8的知识库，记录一下学习的东西
 # 一些函数 
@@ -155,3 +167,30 @@ powerbuilder8的知识库，记录一下学习的东西
     // 或 ld_date = ld_date + 1
     // 合并为新日期时间
     ld_new_date = DateTime(ld_date, ld_time)
+## 数据窗口子窗口模糊搜索
+    call super::editchanged;if row < 1 then return
+    string ls_filter,ls_filter2,ls_filter3
+    点击什么字段执行
+    if dwo.name="cc_ygid" then
+    设置子窗口
+        datawindowchild dwc
+        long ll_c
+        谁的子窗口
+        ll_c = this.getchild("ygid",dwc)
+        if ll_c <> - 1 then
+            if isnull(data) or len(data)=0 then
+                dwc.setfilter("")//bh like 'HC%'
+                dwc.filter()
+            else//(bh like 'HC%') and
+            ls_filter =  "(ygid like '%" + data + "%')"
+                ls_filter2 =  "(ygxm like '%" + data + "%')"
+                ls_filter3 = ls_filter2 + " or " + ls_filter
+                这只针对该字段显示的子字段有效
+    //			dwc.setfilter(" ((ygid like '%"+data+"%') or  (ygxm like '%"+data+"%'))")
+                dwc.SetFilter(ls_filter3)
+                dwc.filter()
+            end if
+            dwc.setsort("ygid a")
+            dwc.sort()
+        end if
+    end if
