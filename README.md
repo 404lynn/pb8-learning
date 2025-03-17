@@ -9,7 +9,7 @@
   - [string转换datetime](#string转换datetime)
   - [获取今天的datetime](#获取今天的datetime)
   - [datetime下日期加1](#datetime下日期加1)
-  - [数据窗口子窗口模糊搜索](#数据窗口子窗口模糊搜索)
+- [数据窗口子窗口模糊搜索](#数据窗口子窗口模糊搜索)
 # pb8-learning
 powerbuilder8的知识库，记录一下学习的东西
 # 一些函数 
@@ -167,7 +167,7 @@ powerbuilder8的知识库，记录一下学习的东西
     // 或 ld_date = ld_date + 1
     // 合并为新日期时间
     ld_new_date = DateTime(ld_date, ld_time)
-## 数据窗口子窗口模糊搜索
+# 数据窗口子窗口模糊搜索
     call super::editchanged;if row < 1 then return
     string ls_filter,ls_filter2,ls_filter3
     点击什么字段执行
