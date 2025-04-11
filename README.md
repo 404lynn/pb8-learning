@@ -10,6 +10,8 @@
   - [获取今天的datetime](#获取今天的datetime)
   - [datetime下日期加1](#datetime下日期加1)
 - [数据窗口子窗口模糊搜索](#数据窗口子窗口模糊搜索)
+- [前端的知识](#前端的知识)
+  - [怎么在调试的时候跳过验证](#怎么在调试的时候跳过验证)
 # pb8-learning
 powerbuilder8的知识库，记录一下学习的东西
 # 一些函数 
@@ -194,3 +196,22 @@ powerbuilder8的知识库，记录一下学习的东西
             dwc.sort()
         end if
     end if
+# 前端的知识
+## 怎么在调试的时候跳过验证
+	const IS_DEV = true
+	// const API_MP = IS_DEV ? 'http://10.141.59.53:8083/zwwlmp' : 'https://shouji.zwwl56.com/zwwlmp';
+	const API_MP = 'http://10.141.59.53:8083/zwwlmp';
+    这个IS_DEV要调成true api换换
+    登录的照抄
+    this.apiRequest(zwutil.zwrequest({
+				url: `${API_MP}/erp/cyltj?dateFrom=${this.dateFrom}&dateTo=${this.dateTo}`,
+				method: 'GET',
+				//notoken: true,
+			}).then(r => {
+				if (r.code === 0) {
+					this.getdata = r.data
+					console.log('LOGIN:', this.getdata)
+				}
+				return r
+			}))
+    注意要有token的要加上
