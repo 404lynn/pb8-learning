@@ -14,6 +14,9 @@
   - [怎么在调试的时候跳过验证](#怎么在调试的时候跳过验证)
 - [怎么把数据窗口完全显示](#怎么把数据窗口完全显示)
 - [使用过滤时间的小技巧](#使用过滤时间的小技巧)
+- [数据窗口行的颜色变化代码](#数据窗口行的颜色变化代码)
+- [打开外部uo的网页](#打开外部uo的网页)
+- [数据窗口删除通用代码](#数据窗口删除通用代码)
 # pb8-learning
 powerbuilder8的知识库，记录一下学习的东西
 # 一些函数 
@@ -242,5 +245,34 @@ powerbuilder8的知识库，记录一下学习的东西
 
     其余代码 整形比较
     ls_filter3 = "Integer(Left(nl, 2)) > " + String(li_nn1) + " and Integer(Left(nl, 2)) < " + String(li_nn2)
+# 数据窗口行的颜色变化代码
+    if(getrow()=currentrow(),rgb(195,226,248) , rgb(255,255,255))
+    （选取变蓝）
 
-    
+    计算代码
+    count(fhlj for group 1) 按照group计数
+
+# 打开外部uo的网页
+
+   	ls_url = "https://www.zwwl56.com/url/chatHis/#/chatRecordsForRoom?chatroom="
+    uo_1.setredraw(FALSE)
+    uo_1.of_loadurl(ls_url)
+    uo_1.setredraw(TRUE)
+# 数据窗口删除通用代码
+    ll_del=dw_1.getrow()
+    dw_1.deleterow(ll_del)
+    （新增的）
+    long ll_insert
+    ll_insert=dw_4.insertrow(0)
+    dw_4.scrolltorow(ll_insert)
+    （保存的）
+    if dw_4.update()=1 then
+		commit using sqlca;
+		messagebox(gs_messagebox_title,"数据保存成功")
+			dw_4.retrieve(il_xq)
+	else
+		rollback using sqlca;
+		messagebox(gs_messagebox_title,"数据保存失败")
+	end if
+
+
