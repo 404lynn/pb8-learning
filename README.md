@@ -13,6 +13,7 @@
 - [前端的知识](#前端的知识)
   - [怎么在调试的时候跳过验证](#怎么在调试的时候跳过验证)
 - [怎么把数据窗口完全显示](#怎么把数据窗口完全显示)
+- [使用过滤时间的小技巧](#使用过滤时间的小技巧)
 # pb8-learning
 powerbuilder8的知识库，记录一下学习的东西
 # 一些函数 
@@ -220,3 +221,26 @@ powerbuilder8的知识库，记录一下学习的东西
 
     点一下Detail这个行 有一个Autosize的勾勾上
     然后去对应的列的position 把Autosize Height勾勾上
+# 使用过滤时间的小技巧
+    string start_date, end_date
+    string filter_str
+    // 获取em_1和em_2中的日期值
+    start_date = em_1.text
+    end_date = em_2.text
+    // 应用过滤条件
+    dw_2.SetFilter("")
+    dw_2.Filter()
+    // 构建过滤条件字符串
+    filter_str = "sj >= " +start_date + " and sj <= " +end_date
+
+    // 应用过滤条件
+    dw_2.SetFilter(filter_str)
+    dw_2.Filter()
+    （其中sj是datetime的 em_1采用yyyy-mm-dd的MASK）
+
+
+
+    其余代码 整形比较
+    ls_filter3 = "Integer(Left(nl, 2)) > " + String(li_nn1) + " and Integer(Left(nl, 2)) < " + String(li_nn2)
+
+    
