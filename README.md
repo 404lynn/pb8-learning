@@ -17,6 +17,7 @@
 - [数据窗口行的颜色变化代码](#数据窗口行的颜色变化代码)
 - [打开外部uo的网页](#打开外部uo的网页)
 - [数据窗口删除通用代码](#数据窗口删除通用代码)
+  - [函数中设置数据窗口的位置](#函数中设置数据窗口的位置)
 # pb8-learning
 powerbuilder8的知识库，记录一下学习的东西
 # 一些函数 
@@ -274,5 +275,17 @@ powerbuilder8的知识库，记录一下学习的东西
 		rollback using sqlca;
 		messagebox(gs_messagebox_title,"数据保存失败")
 	end if
+## 函数中设置数据窗口的位置
 
+    dwj_rcsc.setredraw(false)
+    dwj_rcsc.modify("qwgzdd.width=0")
+    dwj_rcsc.modify("gznx.width=0")
+    dwj_rcsc.modify("qzzt.width=0")
+    dwj_rcsc.modify("yqxz.width=0")
+    dwj_rcsc.modify("xmjy.width=0")
+    //dwj_rcsc.modify("b_2.X=7260")
+    //dwj_rcsc.modify("b_1.X=7639")
+    dwj_rcsc.modify("b_2.X=7635")（此为按钮中心的位置）
+    dwj_rcsc.modify("b_1.X=8014")
+    dwj_rcsc.setredraw(true)
 
